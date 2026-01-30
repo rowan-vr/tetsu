@@ -1,0 +1,6 @@
+[target.x86_64-unknown-uefi]
+runner = "scripts/cargo-uefi-runner.sh"
+
+[alias]
+uefi = "run -p tetsu-boot --target x86_64-unknown-uefi"
+boot = "build -p tetsu-boot --target x86_64-unknown-uefi"
