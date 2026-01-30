@@ -1,6 +1,20 @@
+[workspace]
+members = [ "." ]
+resolver = "2"
+
 [package]
 name = "tetsu-kernel"
 version = "0.1.0"
 edition = "2024"
 
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
 [dependencies]
+
+[[bin]]
+test = false
+bench = false
