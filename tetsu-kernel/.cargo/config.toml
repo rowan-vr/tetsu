@@ -1,2 +1,15 @@
 [build]
-target = "cargo build --target thumbv7em-none-eabihf"
+target = "x86_64-tetsu-kernel.json"
+
+[unstable]
+build-std-features = ["compiler-builtins-mem"]
+build-std = ["core", "compiler_builtins"]
+
+[target.'cfg(target_os = "none")']
+runner = "bootimage runner"
+
+[target.x86_64-tetsu-kernel]
+rustflags = [
+    "-C", "relocation-model=static",
+    "-C", "code-model=kernel",
+]

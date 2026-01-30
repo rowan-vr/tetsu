@@ -20,7 +20,7 @@ BOOT_EFI_SRC="${BOOT_EFI_SRC:-target/x86_64-unknown-uefi/debug/tetsu-boot.efi}"
 BOOT_EFI_DST="::EFI/BOOT/BOOTX64.EFI"
 
 # Optional: also copy a kernel file if you want (can be empty for now)
-KERNEL_SRC="${KERNEL_SRC:-}"
+KERNEL_SRC="${KERNEL_SRC:-build/tetsu-kernel.bin}"
 KERNEL_DST="${KERNEL_DST:-::kernel.bin}"
 
 need_cmd() {

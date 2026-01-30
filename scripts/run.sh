@@ -97,4 +97,5 @@ qemu-system-x86_64 \
   -drive if=pflash,format=raw,file="$OVMF_VARS" \
   -drive format=raw,file="$ESP_IMG" \
   -no-reboot \
-  -no-shutdown
+  -no-shutdown \
+  -serial stdio
