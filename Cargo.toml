@@ -1,3 +1,11 @@
 [workspace]
-members = ["tetsu-boot", "tetsu-kernel"]
+members = [ "tetsu-abi","tetsu-boot", "tetsu-kernel"]
 resolver = "2"
+
+[profile.dev.package."tetsu-boot"]
+debug = 0
+incremental = false
+
+[profile.dev.package."tetsu-kernel"]
+debug = 0
+incremental = false

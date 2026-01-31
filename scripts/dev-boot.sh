@@ -26,6 +26,7 @@ echo "[1/3] Build kernel ($KERNEL_PKG) for $KERNEL_TARGET"
 # Use nightly + build-std so no_std kernels work consistently
 cargo +nightly build -p "$KERNEL_PKG" \
   -Z build-std=core \
+  -Z build-std-features=compiler-builtins-mem \
   --target "$KERNEL_TARGET"
 
 if [[ ! -f "$KERNEL_ELF" ]]; then

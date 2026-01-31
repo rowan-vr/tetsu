@@ -76,16 +76,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "tetsu-abi"
+version = "0.1.0"
+
+[[package]]
 name = "tetsu-boot"
 version = "0.1.0"
 dependencies = [
  "log",
+ "tetsu-abi",
  "uefi",
 ]
 
 [[package]]
 name = "tetsu-kernel"
 version = "0.1.0"
+dependencies = [
+ "tetsu-abi",
+]
 
 [[package]]
 name = "ucs2"

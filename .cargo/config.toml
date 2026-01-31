@@ -1,6 +1,12 @@
 [target.x86_64-unknown-uefi]
 runner = "scripts/cargo-uefi-runner.sh"
 
+[target.x86_64-tetsu-kernel]
+rustflags = [
+    "-C", "relocation-model=static",
+    "-C", "code-model=kernel",
+]
+
 [alias]
 uefi = "run -p tetsu-boot --target x86_64-unknown-uefi"
 boot = "build -p tetsu-boot --target x86_64-unknown-uefi"
