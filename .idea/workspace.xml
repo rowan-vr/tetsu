@@ -18,15 +18,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.cargo/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.cargo/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot/.cargo/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/.cargo/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-boot/src/arch/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-boot/src/arch/x64_86.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-boot/src/gop.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-boot/src/kernel.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tetsu-boot/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-kernel/.cargo/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/.cargo/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-kernel/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-kernel/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +149,7 @@
       <workItem from="1769856217257" duration="1543000" />
       <workItem from="1769858002963" duration="16000" />
       <workItem from="1769858076511" duration="60000" />
-      <workItem from="1769858253176" duration="4971000" />
+      <workItem from="1769858253176" duration="6751000" />
     </task>
     <servers />
   </component>
