@@ -1,5 +1,5 @@
 use log::info;
-use uefi::{boot, cstr16, CStr16, Error, Status};
+use uefi::{boot, CStr16, Status};
 use uefi::boot::{AllocateType, MemoryType};
 use uefi::proto::loaded_image::LoadedImage;
 use uefi::proto::media::file::{File, FileAttribute, FileInfo, FileMode, FileType, RegularFile};

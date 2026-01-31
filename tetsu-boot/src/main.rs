@@ -6,15 +6,9 @@ mod arch;
 mod kernel;
 mod handoff;
 
-use core::arch::asm;
 use log::info;
-use uefi::boot::{AllocateType, MemoryType};
 use uefi::{CStr16};
 use uefi::prelude::*;
-use uefi::proto::loaded_image::LoadedImage;
-use uefi::proto::media::file::{File, FileAttribute, FileInfo, FileMode, FileType, RegularFile};
-use uefi::proto::media::fs::SimpleFileSystem;
-use tetsu_abi::{BootInfo};
 
 const KERNEL_PATH: &CStr16 = cstr16!(r"\kernel.bin");
 const KERNEL_LOAD_ADDR: u64 = 0x0010_0000; // 1 MiB
