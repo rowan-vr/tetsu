@@ -15,7 +15,7 @@ jobs:
       - name: Install system deps (QEMU + OVMF)
         run: |
           sudo apt-get update
-          sudo apt-get install -y qemu-system-x86 ovmf mtools dosfstools
+          sudo apt-get install -y qemu-system-x86 edk2-ovmf mtools dosfstools
 
       - name: Set up Rust nightly
         uses: dtolnay/rust-toolchain@nightly
@@ -33,8 +33,5 @@ jobs:
           chmod +x scripts/*.sh
 
       - name: Run UEFI test binary under QEMU
-        env:
-          OVMF_CODE: /usr/share/OVMF/OVMF_CODE.fd
-          SYS_OVMF_VARS: /usr/share/OVMF/OVMF_VARS.fd
         run: |
           cargo +nightly test-boot
