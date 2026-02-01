@@ -100,7 +100,7 @@ QEMU_ARGS=(
   -serial stdio
 )
 
-if [[  "$RUN_HEADLESS" == "1"]]; then
+if [[ "$RUN_HEADLESS" == "1" ]]; then
   QEMU_ARGS+=(
     -display none
   )
