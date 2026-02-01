@@ -30,7 +30,7 @@ pub fn load_kernel(kernel_path: &CStr16, kernel_addr: u64) -> Result<(), Error>{
 
     info!("[tetsu-boot] kernel size: {}", size);
 
-    let pages = (size + 0xFFF) / 0x1000;
+    let pages = size.div_ceil(0x1000);
     boot::allocate_pages(
         AllocateType::Address(kernel_addr),
         MemoryType::LOADER_DATA,

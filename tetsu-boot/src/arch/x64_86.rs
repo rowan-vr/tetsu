@@ -3,7 +3,7 @@ use uefi::boot;
 use uefi::boot::{AllocateType, MemoryType};
 use tetsu_abi::BootInfo;
 
-pub unsafe fn jump_kernel(entry_addr: usize, stack_top: u64, boot_info_ptr: *const BootInfo) -> ! {
+pub fn jump_kernel(entry_addr: usize, stack_top: u64, boot_info_ptr: *const BootInfo) -> ! {
     unsafe {asm!("cli", options(nomem, nostack, preserves_flags)) };
 
     unsafe {

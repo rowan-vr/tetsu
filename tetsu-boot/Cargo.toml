@@ -14,6 +14,7 @@ uefi-panic = ["uefi/panic_handler"]
 
 [lib]
 path = "src/lib.rs"
+test = false
 
 [[bin]]
 name = "tetsu-boot"

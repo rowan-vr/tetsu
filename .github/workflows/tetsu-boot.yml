@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    needs: [check, clippy]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,15 +27,111 @@ jobs:
           shared-key: uefi-tests
 
       - name: Build tetsu-boot binary
-        env:
-          RUN_HEADLESS: "1"
-        run: |
-          cargo +nightly build -p tetsu-boot --target x86_64-unknown-uefi
+        run: cargo +nightly build -p tetsu-boot --target x86_64-unknown-uefi
+
+  build-tests:
+    runs-on: ubuntu-latest
+    needs: [check-tests, clippy-tests]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure scripts are executable
+        run: chmod +x scripts/*.sh
+
+      - name: Set up Rust nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src
+          targets: x86_64-unknown-uefi
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: uefi-tests
+
+      - name: Build tetsu-boot binary
+        run: cargo +nightly build -p tetsu-boot-tests --target x86_64-unknown-uefi
+
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Rust nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src
+          targets: x86_64-unknown-uefi
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: check-uefi
+
+      - name: Cargo check
+        run: cargo +nightly check -p tetsu-boot --target x86_64-unknown-uefi
+
+  check-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Rust nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src
+          targets: x86_64-unknown-uefi
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: check-uefi
+
+      - name: Cargo check (tests)
+        run: cargo +nightly check -p tetsu-boot-tests --target x86_64-unknown-uefi
+
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Rust nightly (clippy)
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src, clippy
+          targets: x86_64-unknown-uefi
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: clippy-uefi
+
+      - name: Clippy
+        run: cargo +nightly clippy -p tetsu-boot --target x86_64-unknown-uefi -- -D warnings
+
+  clippy-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Rust nightly (clippy)
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src, clippy
+          targets: x86_64-unknown-uefi
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: clippy-uefi
+
+      - name: Clippy (tests)
+        run: cargo +nightly clippy -p tetsu-boot-tests --target x86_64-unknown-uefi -- -D warnings
 
   test-uefi:
     runs-on: ubuntu-latest
-    needs: build
-
+    needs: [build, build-tests]   # optional but recommended
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,14 +140,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y qemu-system-x86 ovmf mtools dosfstools
-
-      - name: Locate OVMF firmware files
-        run: |
-          set -eux
-          dpkg -L ovmf | grep -E 'OVMF_(CODE|VARS).*\.fd$' || true
-          ls -la /usr/share/OVMF || true
-          find /usr/share -maxdepth 3 -type f -name 'OVMF_*fd' -print || true
-
 
       - name: Set up Rust nightly
         uses: dtolnay/rust-toolchain@nightly
@@ -65,11 +153,10 @@ jobs:
           shared-key: uefi-tests
 
       - name: Ensure scripts are executable
-        run: |
-          chmod +x scripts/*.sh
+        run: chmod +x scripts/*.sh
 
       - name: Run UEFI test binary under QEMU
         env:
           RUN_HEADLESS: "1"
         run: |
-          cargo +nightly test -p tetsu-boot-tests --target x86_64-unknown-uefi
+          timeout 180s cargo +nightly test -p tetsu-boot-tests --target x86_64-unknown-uefi -v

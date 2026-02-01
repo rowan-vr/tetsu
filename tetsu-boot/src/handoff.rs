@@ -9,5 +9,5 @@ pub fn handoff(kernel_addr: usize, stack_top: u64, framebuffer_info: Framebuffer
         framebuffer: framebuffer_info,
     };
 
-    unsafe { arch::x64_86::jump_kernel(kernel_addr, stack_top, &bootinfo) }
+    arch::x64_86::jump_kernel(kernel_addr, stack_top, &bootinfo)
 }
