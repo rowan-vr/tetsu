@@ -1,12 +1,40 @@
-name: tetsu-boot-tests
+name: tetsu-boot
 
 on:
   push:
   pull_request:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure scripts are executable
+        run: chmod +x scripts/*.sh
+
+      - name: Set up Rust nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src
+          targets: x86_64-unknown-uefi
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: uefi-tests
+
+      - name: Build tetsu-boot binary
+        env:
+          RUN_HEADLESS: "1"
+        run: |
+          cargo +nightly build -p tetsu-boot --target x86_64-unknown-uefi
+
   test-uefi:
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout
@@ -44,4 +72,4 @@ jobs:
         env:
           RUN_HEADLESS: "1"
         run: |
-          cargo +nightly test-boot
+          cargo +nightly test -p tetsu-boot-tests --target x86_64-unknown-uefi
