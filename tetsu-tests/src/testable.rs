@@ -34,7 +34,7 @@ where
                 serial_write_str("\n");
                 true
             }
-            Err(msg) => {
+            Err(()) => {
                 serial_write_str(RED);
                 serial_write_str("FAIL");
                 serial_write_str(RESET);
