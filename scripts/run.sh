@@ -101,7 +101,9 @@ QEMU_ARGS=(
 )
 
 if [[  "$RUN_HEADLESS" == "1"]]; then
-  QEMU_ARGS+=(-display none)
+  QEMU_ARGS+=(
+    -display none
+  )
 fi
 
 if [[ "$RUN_MODE" == "test" ]]; then
