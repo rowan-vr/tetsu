@@ -55,6 +55,6 @@ fn test_alloc_stack_pages_invariants() -> Result<(), ()> {
         *last = 0x55;
     }
 
-    Err(())
+    Ok(())
 }
 
