@@ -2,18 +2,28 @@
 #![no_main]
 
 use core::panic::PanicInfo;
+use core::ptr;
+use core::sync::atomic::{AtomicPtr, Ordering};
 use tetsu_abi::{BootInfo, FramebufferInfo};
 
 // static HELLO: &[u8] = b"Hello World!";
 
+static BOOT_INFO_PTR: AtomicPtr<BootInfo> = AtomicPtr::new(ptr::null_mut());
+
 #[unsafe(no_mangle)]
 #[unsafe(link_section = ".text._start")]
 pub extern "C" fn _start(boot_info_ptr: *const BootInfo) -> ! {
-    let boot_info = unsafe { &*boot_info_ptr };
+    BOOT_INFO_PTR.store(boot_info_ptr as *mut BootInfo, Ordering::Release);
 
-    clear_screen(&boot_info.framebuffer, 0x00FF0000);
+    clear_screen(&boot_info().unwrap().framebuffer, 0x00FF0000);
 
+    #[allow(clippy::empty_loop)]
     loop {}
+}
+
+pub fn boot_info() -> Result<&'static BootInfo, &'static str> {
+    let p = BOOT_INFO_PTR.load(Ordering::Acquire);
+    unsafe { Ok(&*p) }
 }
 
 fn clear_screen(fb: &FramebufferInfo, color: u32) {

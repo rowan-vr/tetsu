@@ -27,20 +27,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/cargo-kernel-runner.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/resources/test-boot.efi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tetsu-kernel-tests/Cargo.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tetsu-kernel-tests/src/main.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tetsu-kernel-tests/src/trivial.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tetsu-kernel-tests/x86_64-tetsu-kernel.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/tetsu-abi.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/tetsu-kernel.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.cargo/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.cargo/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tetsu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tetsu.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/tetsu-boot.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tetsu-boot.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/tetsu-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tetsu-tests.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dev-boot.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/dev-boot.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pre-commit-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-kernel/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +78,7 @@
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/rowan/RustroverProjects/tetsu/tetsu-kernel-tests",
+    "last_opened_file_path": "/home/rowan/RustroverProjects/tetsu/.github/workflows",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,10 +93,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.github/workflows" />
       <recent name="$PROJECT_DIR$/tetsu-kernel-tests" />
       <recent name="$PROJECT_DIR$/scripts" />
       <recent name="$PROJECT_DIR$/tetsu-kernel-tests/src" />
-      <recent name="$PROJECT_DIR$/.github/workflows" />
       <recent name="$PROJECT_DIR$/tetsu-tests/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -204,7 +198,7 @@
       <workItem from="1769858076511" duration="60000" />
       <workItem from="1769858253176" duration="16792000" />
       <workItem from="1769941786111" duration="329000" />
-      <workItem from="1769942449830" duration="19634000" />
+      <workItem from="1769942449830" duration="20626000" />
     </task>
     <servers />
   </component>

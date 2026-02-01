@@ -101,6 +101,56 @@ repos:
         pass_filenames: false
         stages: [pre-push]
 
+# ------ tetsu-kernel ------
+
+      - id: cargo-check-kernel
+        files: ^tetsu-kernel/.*\.rs$
+        name: cargo check (tetsu-kernel)
+        entry: bash -lc 'cargo +nightly check -p tetsu-kernel -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-check-kernel-tests
+        files: ^tetsu-kernel-tests/.*\.rs$
+        name: cargo check (tetsu-kernel-tests)
+        entry: bash -lc 'cargo +nightly check -p tetsu-kernel-tests -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-clippy-kernel
+        files: ^tetsu-kernel/.*\.rs$
+        name: cargo clippy (tetsu-kernel)
+        entry: bash -lc 'cargo +nightly clippy -p tetsu-kernel -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -- -D warnings'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-clippy-kernel-tests
+        files: ^tetsu-kernel-tests/.*\.rs$
+        name: cargo clippy (tetsu-kernel-tests)
+        entry: bash -lc 'cargo +nightly clippy -p tetsu-kernel-tests -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -- -D warnings'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-build-kernel
+        files: ^tetsu-kernel/.*\.rs$
+        name: cargo build (tetsu-kernel)
+        entry: bash -lc 'cargo +nightly build -p tetsu-kernel -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json'
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: cargo-build-kernel-tests
+        files: ^tetsu-kernel-tests/.*\.rs$
+        name: cargo build (tetsu-kernel-tests)
+        entry: bash -lc 'cargo +nightly build -p tetsu-kernel-tests -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json'
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
 # ------ tetsu-abi ------
       - id: cargo-check-abi
         files: ^tetsu-abi/.*\.rs$

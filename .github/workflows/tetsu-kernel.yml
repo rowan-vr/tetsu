@@ -19,15 +19,14 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: rust-src
-          targets: x86_64-unknown-uefi
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: boot-tests
+          shared-key: kernel-tests
 
-      - name: Build tetsu-boot binary
-        run: cargo +nightly build -p tetsu-boot --target x86_64-unknown-uefi
+      - name: Build tetsu-kernel binary
+        run: cargo +nightly build -p tetsu-kernel --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
 
   build-tests:
     runs-on: ubuntu-latest
@@ -43,15 +42,14 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: rust-src
-          targets: x86_64-unknown-uefi
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: boot-tests
+          shared-key: kernel-tests
 
-      - name: Build tetsu-boot-tests binary
-        run: cargo +nightly build -p tetsu-boot-tests --target x86_64-unknown-uefi
+      - name: Build tetsu-kernel-tests binary
+        run: cargo +nightly build -p tetsu-kernel-tests --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
 
   check:
     runs-on: ubuntu-latest
@@ -62,15 +60,14 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: rust-src
-          targets: x86_64-unknown-uefi
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: boot-check
+          shared-key: kernel-check
 
       - name: Cargo check
-        run: cargo +nightly check -p tetsu-boot --target x86_64-unknown-uefi
+        run: cargo +nightly check -p tetsu-kernel --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
 
   check-tests:
     runs-on: ubuntu-latest
@@ -81,15 +78,14 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: rust-src
-          targets: x86_64-unknown-uefi
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: boot-check
+          shared-key: kernel-check
 
       - name: Cargo check (tests)
-        run: cargo +nightly check -p tetsu-boot-tests --target x86_64-unknown-uefi
+        run: cargo +nightly check -p tetsu-kernel-tests --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
 
   clippy:
     runs-on: ubuntu-latest
@@ -100,15 +96,14 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: rust-src, clippy
-          targets: x86_64-unknown-uefi
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: boot-clippy
+          shared-key: kernel-clippy
 
       - name: Clippy
-        run: cargo +nightly clippy -p tetsu-boot --target x86_64-unknown-uefi -- -D warnings
+        run: cargo +nightly clippy -p tetsu-kernel --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -- -D warnings
 
   clippy-tests:
     runs-on: ubuntu-latest
@@ -119,17 +114,16 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: rust-src, clippy
-          targets: x86_64-unknown-uefi
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: boot-clippy
+          shared-key: kernel-clippy
 
       - name: Clippy (tests)
-        run: cargo +nightly clippy -p tetsu-boot-tests --target x86_64-unknown-uefi -- -D warnings
+        run: cargo +nightly clippy -p tetsu-kernel-tests --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -- -D warnings
 
-  test-uefi:
+  test-kernel:
     runs-on: ubuntu-latest
     needs: [build, build-tests]   # optional but recommended
     steps:
@@ -145,18 +139,17 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: rust-src
-          targets: x86_64-unknown-uefi
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: boot-tests
+          shared-key: kernel-tests
 
       - name: Ensure scripts are executable
         run: chmod +x scripts/*.sh
 
-      - name: Run UEFI test binary under QEMU
+      - name: Run Kernel test image binary under QEMU
         env:
           RUN_HEADLESS: "1"
         run: |
-          timeout 180s cargo +nightly test -p tetsu-boot-tests --target x86_64-unknown-uefi -v
+          timeout 180s cargo +nightly test -p tetsu-kernel-tests --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -v

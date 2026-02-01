@@ -23,10 +23,10 @@ jobs:
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: tests
+          shared-key: abi
 
-      - name: Build tetsu-tests library
-        run: cargo +nightly build -p tetsu-tests
+      - name: Build tetsu-abi library
+        run: cargo +nightly build -p tetsu-abi
 
   check:
     runs-on: ubuntu-latest
@@ -41,10 +41,10 @@ jobs:
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: tests-check
+          shared-key: abi-check
 
       - name: Cargo check
-        run: cargo +nightly check -p tetsu-tests
+        run: cargo +nightly check -p tetsu-abi
 
 
   clippy:
@@ -60,7 +60,7 @@ jobs:
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          shared-key: tests-clippy
+          shared-key: abi-clippy
 
       - name: Clippy
-        run: cargo +nightly clippy -p tetsu-tests -- -D warnings
+        run: cargo +nightly clippy -p tetsu-abi -- -D warnings
