@@ -88,9 +88,10 @@ if [[ ! -f "$OVMF_VARS" ]]; then
     exit 1
   fi
 
-  cp $SYS_OVMF_VARS $OVMF_VARS
+  cp "$SYS_OVMF_VARS" "$OVMF_VARS"
 fi
 
+# shellcheck disable=SC2054
 QEMU_ARGS=(
   -machine q35
   -m "${RAM}M"
@@ -108,6 +109,7 @@ fi
 
 if [[ "$RUN_MODE" == "test" ]]; then
   echo "[run] Test mode enabled (isa-debug-exit)"
+  # shellcheck disable=SC2054
   QEMU_ARGS+=(
     -device isa-debug-exit,iobase=0xf4,iosize=0x04
   )

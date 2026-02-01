@@ -64,4 +64,3 @@ jobs:
 
       - name: Clippy
         run: cargo +nightly clippy -p tetsu-tests -- -D warnings
-

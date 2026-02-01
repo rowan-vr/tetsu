@@ -24,14 +24,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cargo/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.cargo/config.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/tetsu-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tetsu-tests.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/src/gop.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/src/gop.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/src/kernel.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/src/kernel.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/src/trivial.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/src/trivial.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/qemu.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/qemu.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/runner.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/runner.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/testable.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/testable.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot/rust-toolchain.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/rust-toolchain.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-kernel/.cargo/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/.cargo/config.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-kernel/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-kernel/x86_64-tetsu-kernel.json" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/x86_64-tetsu-kernel.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,29 +68,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cargo.Test it_works.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/rowan/RustroverProjects/tetsu/.github/workflows",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
-    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
-    "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "language.rust",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cargo.Test it_works.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rowan/RustroverProjects/tetsu/.github/workflows&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;language.rust&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/.github/workflows" />
@@ -95,9 +98,9 @@
       <recent name="$PROJECT_DIR$/tetsu-boot-tests" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/scripts/resources" />
       <recent name="$PROJECT_DIR$/tetsu-boot-tests/src" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Cargo.Test it_works">
@@ -193,7 +196,7 @@
       <workItem from="1769858076511" duration="60000" />
       <workItem from="1769858253176" duration="16792000" />
       <workItem from="1769941786111" duration="329000" />
-      <workItem from="1769942449830" duration="15828000" />
+      <workItem from="1769942449830" duration="17243000" />
     </task>
     <servers />
   </component>

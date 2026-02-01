@@ -1,0 +1,145 @@
+exclude: |
+  (?x)^(
+      \.idea/|
+      target/|
+      build/|
+      dist/|
+      .*\.iml|
+      \.DS_Store
+  )
+
+repos:
+  # Basic hygiene (fast)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: mixed-line-ending
+      - id: check-added-large-files
+
+  # Optional: shell script linting
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.10.0
+    hooks:
+      - id: shellcheck
+        files: ^scripts/.*\.sh$
+
+  # Optional: format YAML nicely (if you want)
+  # - repo: https://github.com/adrienverge/yamllint
+  #   rev: v1.35.1
+  #   hooks:
+  #     - id: yamllint
+
+  # Rust hooks (local so we control toolchain/target)
+  - repo: local
+    hooks:
+      - id: cargo-fmt
+        files: \.rs$
+        name: cargo fmt (workspace)
+        entry: bash -lc 'cargo +nightly fmt --all'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+# ------ tetsu-boot ------
+
+      - id: cargo-check-uefi-boot
+        files: \.rs$
+        name: cargo check (tetsu-boot uefi)
+        entry: bash -lc 'cargo +nightly check -p tetsu-boot --target x86_64-unknown-uefi'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-check-uefi-boot-tests
+        files: \.rs$
+        name: cargo check (tetsu-boot-tests uefi)
+        entry: bash -lc 'cargo +nightly check -p tetsu-boot-tests --target x86_64-unknown-uefi'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-clippy-uefi-boot
+        files: \.rs$
+        name: cargo clippy (tetsu-boot uefi)
+        entry: bash -lc 'cargo +nightly clippy -p tetsu-boot --target x86_64-unknown-uefi -- -D warnings'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-clippy-uefi-boot-tests
+        files: \.rs$
+        name: cargo clippy (tetsu-boot-tests uefi)
+        entry: bash -lc 'cargo +nightly clippy -p tetsu-boot-tests --target x86_64-unknown-uefi -- -D warnings'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-build-uefi-boot
+        files: \.rs$
+        name: cargo build (tetsu-boot uefi)
+        entry: bash -lc 'cargo +nightly build -p tetsu-boot --target x86_64-unknown-uefi'
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: cargo-build-uefi-boot-tests
+        files: \.rs$
+        name: cargo build (tetsu-boot-tests uefi)
+        entry: bash -lc 'cargo +nightly build -p tetsu-boot-tests --target x86_64-unknown-uefi'
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
+# ------ tetsu-abi ------
+      - id: cargo-check-abi
+        files: \.rs$
+        name: cargo check (tetsu-abi)
+        entry: bash -lc 'cargo +nightly check -p tetsu-abi'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-clippy-abi
+        files: \.rs$
+        name: cargo clippy (tetsu-abi)
+        entry: bash -lc 'cargo +nightly clippy -p tetsu-abi -- -D warnings'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-build-abi
+        files: \.rs$
+        name: cargo build (tetsu-abi)
+        entry: bash -lc 'cargo +nightly build -p tetsu-abi'
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
+# ------ tetsu-tests ------
+      - id: cargo-check-tests
+        files: \.rs$
+        name: cargo check (tetsu-tests)
+        entry: bash -lc 'cargo +nightly check -p tetsu-tests'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-clippy-tests
+        files: \.rs$
+        name: cargo clippy (tetsu-tests)
+        entry: bash -lc 'cargo +nightly clippy -p tetsu-tests -- -D warnings'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: cargo-build-tests
+        files: \.rs$
+        name: cargo build (tetsu-tests)
+        entry: bash -lc 'cargo +nightly build -p tetsu-tests'
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
