@@ -26,7 +26,7 @@ jobs:
           shared-key: kernel-tests
 
       - name: Build tetsu-kernel binary
-        run: cargo +nightly build -p tetsu-kernel --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
+        run: cargo +nightly build -p tetsu-kernel -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
 
   build-tests:
     runs-on: ubuntu-latest
@@ -49,7 +49,7 @@ jobs:
           shared-key: kernel-tests
 
       - name: Build tetsu-kernel-tests binary
-        run: cargo +nightly build -p tetsu-kernel-tests --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
+        run: cargo +nightly build -p tetsu-kernel-tests -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
 
   check:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
           shared-key: kernel-check
 
       - name: Cargo check
-        run: cargo +nightly check -p tetsu-kernel --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
+        run: cargo +nightly check -p tetsu-kernel -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
 
   check-tests:
     runs-on: ubuntu-latest
@@ -85,7 +85,7 @@ jobs:
           shared-key: kernel-check
 
       - name: Cargo check (tests)
-        run: cargo +nightly check -p tetsu-kernel-tests --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
+        run: cargo +nightly check -p tetsu-kernel-tests -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json
 
   clippy:
     runs-on: ubuntu-latest
@@ -103,7 +103,7 @@ jobs:
           shared-key: kernel-clippy
 
       - name: Clippy
-        run: cargo +nightly clippy -p tetsu-kernel --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -- -D warnings
+        run: cargo +nightly clippy -p tetsu-kernel -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -- -D warnings
 
   clippy-tests:
     runs-on: ubuntu-latest
@@ -121,7 +121,7 @@ jobs:
           shared-key: kernel-clippy
 
       - name: Clippy (tests)
-        run: cargo +nightly clippy -p tetsu-kernel-tests --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -- -D warnings
+        run: cargo +nightly clippy -p tetsu-kernel-tests -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -- -D warnings
 
   test-kernel:
     runs-on: ubuntu-latest
@@ -152,4 +152,4 @@ jobs:
         env:
           RUN_HEADLESS: "1"
         run: |
-          timeout 180s cargo +nightly test -p tetsu-kernel-tests --Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -v
+          timeout 180s cargo +nightly test -p tetsu-kernel-tests -Zjson-target-spec -Z build-std=core -Z build-std-features=compiler-builtins-mem --target tetsu-kernel/x86_64-tetsu-kernel.json -v
