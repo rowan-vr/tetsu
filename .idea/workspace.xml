@@ -24,17 +24,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cargo/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.cargo/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/tetsu-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tetsu-tests.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot/rust-toolchain.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/rust-toolchain.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-kernel/.cargo/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/.cargo/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-kernel/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-kernel/x86_64-tetsu-kernel.json" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/x86_64-tetsu-kernel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pre-commit-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +186,7 @@
       <workItem from="1769858076511" duration="60000" />
       <workItem from="1769858253176" duration="16792000" />
       <workItem from="1769941786111" duration="329000" />
-      <workItem from="1769942449830" duration="17243000" />
+      <workItem from="1769942449830" duration="17539000" />
     </task>
     <servers />
   </component>

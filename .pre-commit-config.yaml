@@ -47,7 +47,7 @@ repos:
 # ------ tetsu-boot ------
 
       - id: cargo-check-uefi-boot
-        files: \.rs$
+        files: ^tetsu-boot/.*\.rs$
         name: cargo check (tetsu-boot uefi)
         entry: bash -lc 'cargo +nightly check -p tetsu-boot --target x86_64-unknown-uefi'
         language: system
@@ -55,7 +55,7 @@ repos:
         stages: [pre-commit]
 
       - id: cargo-check-uefi-boot-tests
-        files: \.rs$
+        files: ^tetsu-boot-tests/.*\.rs$
         name: cargo check (tetsu-boot-tests uefi)
         entry: bash -lc 'cargo +nightly check -p tetsu-boot-tests --target x86_64-unknown-uefi'
         language: system
@@ -63,7 +63,7 @@ repos:
         stages: [pre-commit]
 
       - id: cargo-clippy-uefi-boot
-        files: \.rs$
+        files: ^tetsu-boot/.*\.rs$
         name: cargo clippy (tetsu-boot uefi)
         entry: bash -lc 'cargo +nightly clippy -p tetsu-boot --target x86_64-unknown-uefi -- -D warnings'
         language: system
@@ -71,7 +71,7 @@ repos:
         stages: [pre-commit]
 
       - id: cargo-clippy-uefi-boot-tests
-        files: \.rs$
+        files: ^tetsu-boot-tests/.*\.rs$
         name: cargo clippy (tetsu-boot-tests uefi)
         entry: bash -lc 'cargo +nightly clippy -p tetsu-boot-tests --target x86_64-unknown-uefi -- -D warnings'
         language: system
@@ -79,7 +79,7 @@ repos:
         stages: [pre-commit]
 
       - id: cargo-build-uefi-boot
-        files: \.rs$
+        files: ^tetsu-boot/.*\.rs$
         name: cargo build (tetsu-boot uefi)
         entry: bash -lc 'cargo +nightly build -p tetsu-boot --target x86_64-unknown-uefi'
         language: system
@@ -87,7 +87,7 @@ repos:
         stages: [pre-push]
 
       - id: cargo-build-uefi-boot-tests
-        files: \.rs$
+        files: ^tetsu-boot-tests/.*\.rs$
         name: cargo build (tetsu-boot-tests uefi)
         entry: bash -lc 'cargo +nightly build -p tetsu-boot-tests --target x86_64-unknown-uefi'
         language: system
@@ -96,7 +96,7 @@ repos:
 
 # ------ tetsu-abi ------
       - id: cargo-check-abi
-        files: \.rs$
+        files: ^tetsu-abi/.*\.rs$
         name: cargo check (tetsu-abi)
         entry: bash -lc 'cargo +nightly check -p tetsu-abi'
         language: system
@@ -104,7 +104,7 @@ repos:
         stages: [pre-commit]
 
       - id: cargo-clippy-abi
-        files: \.rs$
+        files: ^tetsu-abi/.*\.rs$
         name: cargo clippy (tetsu-abi)
         entry: bash -lc 'cargo +nightly clippy -p tetsu-abi -- -D warnings'
         language: system
@@ -112,7 +112,7 @@ repos:
         stages: [pre-commit]
 
       - id: cargo-build-abi
-        files: \.rs$
+        files: ^tetsu-abi/.*\.rs$
         name: cargo build (tetsu-abi)
         entry: bash -lc 'cargo +nightly build -p tetsu-abi'
         language: system
@@ -121,7 +121,7 @@ repos:
 
 # ------ tetsu-tests ------
       - id: cargo-check-tests
-        files: \.rs$
+        files: ^tetsu-tests/.*\.rs$
         name: cargo check (tetsu-tests)
         entry: bash -lc 'cargo +nightly check -p tetsu-tests'
         language: system
@@ -129,7 +129,7 @@ repos:
         stages: [pre-commit]
 
       - id: cargo-clippy-tests
-        files: \.rs$
+        files: ^tetsu-tests/.*\.rs$
         name: cargo clippy (tetsu-tests)
         entry: bash -lc 'cargo +nightly clippy -p tetsu-tests -- -D warnings'
         language: system
@@ -137,7 +137,7 @@ repos:
         stages: [pre-commit]
 
       - id: cargo-build-tests
-        files: \.rs$
+        files: ^tetsu-tests/.*\.rs$
         name: cargo build (tetsu-tests)
         entry: bash -lc 'cargo +nightly build -p tetsu-tests'
         language: system
