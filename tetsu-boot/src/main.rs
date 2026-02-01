@@ -31,11 +31,11 @@ fn run() -> Status {
 
     let (_, stack_top) = arch::x64_86::alloc_stack_pages(64);
 
-    info!("[tetsu-boot] stack initialised");
+    info!("[tetsu-boot] stack initialized");
 
     let fb = gop::capture_framebuffer_info().expect("[tetsu-boot] Failed to get framebuffer info");
 
-    info!("[tetsu-boot] framebuffer initialised");
+    info!("[tetsu-boot] framebuffer initialized");
 
     info!("[tetsu-boot] Jumping to kernel...");
 

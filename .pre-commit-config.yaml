@@ -11,7 +11,7 @@ exclude: |
 repos:
   # Basic hygiene (fast)
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
         stages: [pre-commit]
@@ -28,11 +28,18 @@ repos:
 
   # Optional: shell script linting
   - repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.10.0
+    rev: v0.11.0
     hooks:
       - id: shellcheck
         files: ^scripts/.*\.sh$
         stages: [pre-commit]
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.42.3
+    hooks:
+      - id: typos
+        stages: [pre-commit]
+
 
   # Optional: format YAML nicely (if you want)
   # - repo: https://github.com/adrienverge/yamllint

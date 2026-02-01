@@ -1,0 +1,84 @@
+# deny.toml — cargo-deny config (updated for current versions)
+
+[graph]
+# Since your CI / project is UEFI-focused, restrict the crate graph to that target.
+targets = ["x86_64-unknown-uefi"]
+
+# Usually what you want in a workspace so features don't hide deps.
+all-features = true
+
+
+[advisories]
+# NOTE: Older fields like `vulnerability`, `notice`, `severity-threshold` were removed.
+# Advisories now error by default; use `ignore` to suppress specific IDs. :contentReference[oaicite:1]{index=1}
+
+# Where to store RustSec db clones (default is fine, but explicit is nice)
+db-path = "$CARGO_HOME/advisory-dbs"
+db-urls = ["https://github.com/RustSec/advisory-db"]
+
+ignore = [
+    # Add items like:
+    # "RUSTSEC-20xx-xxxx",
+    # { id = "RUSTSEC-20xx-xxxx", reason = "not reachable in our UEFI boot path" },
+]
+
+# These are not "warn/deny" anymore; they control *scope* of when they fail.
+# Good default: only fail if you directly depend on an unmaintained crate.
+unmaintained = "workspace"
+# Unsoundness is usually worth failing even if transitive; tune if it becomes too noisy.
+unsound = "all"
+
+# Yanked versions are their own knob now.
+yanked = "warn"
+# If you want to be strict, flip to:
+# yanked = "deny"
+
+
+[bans]
+# Duplicate versions are common in Rust; warn first, deny later once you clean it up.
+multiple-versions = "warn"
+
+# Don’t allow "*" dependencies in Cargo.toml.
+wildcards = "deny"
+
+# Useful for workspaces: allows wildcard path deps for local crates (if you ever use them).
+allow-wildcard-paths = true
+
+deny = [
+    # Example bans if you ever need them:
+    # { crate = "openssl", use-instead = "rustls" },
+]
+
+
+[licenses]
+allow = [
+    "Apache-2.0",
+    "MIT",
+
+    # needed by unicode-ident (via proc-macro2/syn/quote etc.)
+    "Unicode-3.0",
+
+    # needed by ucs2 (pulled by uefi)
+    "MPL-2.0",
+]
+
+confidence-threshold = 0.95
+unused-allowed-license = "warn"
+
+# Optional: if you have unpublished workspace crates or private registries later
+[licenses.private]
+ignore = true
+
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+
+# crates.io index (git index URL is still the canonical allow-registry value in docs)
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+
+# If you ever use git deps, it's a good idea to require pinning
+required-git-spec = "rev"
+
+# If/when you add specific git deps, allowlist them:
+# allow-git = ["https://github.com/ORG/REPO"]

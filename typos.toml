@@ -1,0 +1,67 @@
+# typos.toml — configuration for crate-ci/typos
+# Docs: https://raw.githubusercontent.com/crate-ci/typos/master/docs/reference.md
+
+[files]
+# Gitignore-style globs (not regex)
+extend-exclude = [
+    ".idea/**",
+    "target/**",
+    "build/**",
+    "*.img",
+    "*.efi",
+    "*.bin",
+    "*.log",
+    "OVMF_VARS.fd",
+    # If you vendor anything later:
+    # "vendor/**",
+]
+
+# Keep the defaults (these are the defaults, listed here only if you want to be explicit)
+ignore-hidden = true
+ignore-files  = true
+ignore-dot    = true
+ignore-vcs    = true
+ignore-global = true
+ignore-parent = true
+
+[default]
+check-filename = true
+check-file = true
+unicode = true
+locale = "en-us"
+
+# Optional: ignore regions (useful for generated blocks or big blobs)
+extend-ignore-re = [
+    # Turn off spellchecking blocks:
+    "(?s)(#|//)\\s*spellchecker:off.*?\\n\\s*(#|//)\\s*spellchecker:on",
+]
+
+# Allow some common low-level identifiers / patterns
+extend-ignore-identifiers-re = [
+    # Hex literals like 0x0010_0000
+    "0x[0-9A-Fa-f_]+",
+
+    # x86_64 register names (rough but effective)
+    "\\b(r[abcd]x|r[sd]i|rsp|rbp|rip|r8|r9|r1[0-5])\\b",
+
+    # ALL_CAPS constants / acronyms
+    "^[A-Z0-9_]+$",
+]
+
+# Allow common short “words” (not identifiers) if they trigger
+extend-ignore-words-re = [
+    # Ignore very short words (often noise in code)
+    "^[A-Za-z]{1,2}$",
+]
+
+[default.extend-words]
+# "word" dictionary (case-sensitive)
+UEFI = "UEFI"
+GOP  = "GOP"
+QEMU = "QEMU"
+OVMF = "OVMF"
+MMIO = "MMIO"
+IRQ  = "IRQ"
+ELF  = "ELF"
+initrd = "initrd"
+bootloader = "bootloader"
