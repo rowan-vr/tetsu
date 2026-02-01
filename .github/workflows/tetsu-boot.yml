@@ -50,7 +50,7 @@ jobs:
         with:
           shared-key: uefi-tests
 
-      - name: Build tetsu-boot binary
+      - name: Build tetsu-boot-tests binary
         run: cargo +nightly build -p tetsu-boot-tests --target x86_64-unknown-uefi
 
   check:

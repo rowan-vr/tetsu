@@ -1,4 +1,4 @@
-use crate::qemu::{serial_write_str, BOLD, GREEN, RED, RESET};
+use crate::qemu::{BOLD, GREEN, RED, RESET, serial_write_str};
 
 pub trait Testable {
     fn run(&self) -> bool;
@@ -9,11 +9,15 @@ pub trait IntoTestResult {
 }
 
 impl IntoTestResult for () {
-    fn into_result(self) -> Result<(), ()> { Ok(()) }
+    fn into_result(self) -> Result<(), ()> {
+        Ok(())
+    }
 }
 
 impl IntoTestResult for Result<(), ()> {
-    fn into_result(self) -> Result<(), ()> { self }
+    fn into_result(self) -> Result<(), ()> {
+        self
+    }
 }
 
 impl<T, R> Testable for T

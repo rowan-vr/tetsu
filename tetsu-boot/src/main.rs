@@ -1,13 +1,13 @@
 #![no_main]
 #![no_std]
 
-mod gop;
 mod arch;
-mod kernel;
+mod gop;
 mod handoff;
+mod kernel;
 
 use log::info;
-use uefi::{CStr16};
+use uefi::CStr16;
 use uefi::prelude::*;
 
 const KERNEL_PATH: &CStr16 = cstr16!(r"\kernel.bin");
@@ -29,7 +29,7 @@ fn run() -> Status {
 
     info!("[tetsu-boot] loaded kernel @ {:#x}", KERNEL_LOAD_ADDR);
 
-    let (_,stack_top)  = arch::x64_86::alloc_stack_pages(64);
+    let (_, stack_top) = arch::x64_86::alloc_stack_pages(64);
 
     info!("[tetsu-boot] stack initialised");
 
@@ -39,5 +39,5 @@ fn run() -> Status {
 
     info!("[tetsu-boot] Jumping to kernel...");
 
-    handoff::handoff(KERNEL_LOAD_ADDR as usize,stack_top, fb);
+    handoff::handoff(KERNEL_LOAD_ADDR as usize, stack_top, fb);
 }

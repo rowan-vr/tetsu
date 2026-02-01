@@ -1,6 +1,6 @@
-use uefi::{cstr16, CStr16};
 use tetsu_boot::kernel;
 use tetsu_tests::check;
+use uefi::{CStr16, cstr16};
 
 #[test_case]
 fn test_load_kernel_happy_path() -> Result<(), ()> {
@@ -14,9 +14,14 @@ fn test_load_kernel_happy_path() -> Result<(), ()> {
     let buf = unsafe { core::slice::from_raw_parts(addr as *const u8, 16) };
     let mut any_nonzero = false;
     for &b in buf {
-        if b != 0 { any_nonzero = true; break; }
+        if b != 0 {
+            any_nonzero = true;
+            break;
+        }
     }
-    if !any_nonzero { return Err(()); }
+    if !any_nonzero {
+        return Err(());
+    }
 
     Ok(())
 }
@@ -38,8 +43,8 @@ fn test_alloc_stack_pages_invariants() -> Result<(), ()> {
     let (base, top) = tetsu_boot::arch::x64_86::alloc_stack_pages(pages);
 
     check!(base != 0);
-    check!((base & 0xFFF) == 0);           // page aligned
-    check!((top & 0xF) == 0);              // 16-byte aligned
+    check!((base & 0xFFF) == 0); // page aligned
+    check!((top & 0xF) == 0); // 16-byte aligned
     check!(top > base);
 
     let span = top - base;
@@ -57,4 +62,3 @@ fn test_alloc_stack_pages_invariants() -> Result<(), ()> {
 
     Ok(())
 }
-

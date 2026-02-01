@@ -1,8 +1,8 @@
 #![no_std]
 
-pub mod testable;
 pub mod qemu;
 pub mod runner;
+pub mod testable;
 
 /// Fail the current test with a message if condition is false.
 #[macro_export]
@@ -10,7 +10,7 @@ macro_rules! check {
     ($cond:expr) => {
         if !($cond) {
             return Err(());
-        } 
+        }
     };
 }
 
@@ -20,6 +20,6 @@ macro_rules! check_eq {
     ($left:expr, $right:expr) => {
         if $left != $right {
             return Err(());
-        } 
+        }
     };
 }

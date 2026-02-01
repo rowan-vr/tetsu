@@ -1,4 +1,6 @@
-use crate::qemu::{qemu_exit_fail, qemu_exit_success, serial_write_number, serial_write_str, BOLD, RESET};
+use crate::qemu::{
+    BOLD, RESET, qemu_exit_fail, qemu_exit_success, serial_write_number, serial_write_str,
+};
 use crate::testable::Testable;
 
 pub fn test_runner(tests: &[&dyn Testable]) -> ! {

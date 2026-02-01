@@ -24,13 +24,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/tetsu.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/tetsu-boot.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tetsu-boot.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-abi/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-abi/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/src/kernel.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/src/kernel.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/src/trivial.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/src/trivial.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot/src/arch/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/arch/mod.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tetsu-boot/src/arch/x64_86.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/arch/x64_86.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot/src/gop.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/gop.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tetsu-boot/src/handoff.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/handoff.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tetsu-boot/src/kernel.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/kernel.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-boot/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/qemu.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/qemu.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/runner.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/runner.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/testable.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/testable.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +199,7 @@
       <workItem from="1769858076511" duration="60000" />
       <workItem from="1769858253176" duration="16792000" />
       <workItem from="1769941786111" duration="329000" />
-      <workItem from="1769942449830" duration="14044000" />
+      <workItem from="1769942449830" duration="14394000" />
     </task>
     <servers />
   </component>

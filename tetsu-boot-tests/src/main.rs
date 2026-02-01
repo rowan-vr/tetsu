@@ -6,11 +6,9 @@
 #![allow(unused_imports)]
 #![allow(unreachable_code)]
 
-
-
-mod trivial;
 mod gop;
 mod kernel;
+mod trivial;
 
 #[cfg(target_os = "uefi")]
 use core::panic::PanicInfo;

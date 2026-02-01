@@ -1,23 +1,27 @@
 use log::info;
-use uefi::{boot, CStr16, Error, Status};
 use uefi::boot::{AllocateType, MemoryType};
 use uefi::proto::loaded_image::LoadedImage;
 use uefi::proto::media::file::{File, FileAttribute, FileInfo, FileMode, FileType, RegularFile};
 use uefi::proto::media::fs::SimpleFileSystem;
+use uefi::{CStr16, Error, Status, boot};
 
-pub fn load_kernel(kernel_path: &CStr16, kernel_addr: u64) -> Result<(), Error>{
+pub fn load_kernel(kernel_path: &CStr16, kernel_addr: u64) -> Result<(), Error> {
     let image = boot::image_handle();
 
     let loaded = boot::open_protocol_exclusive::<LoadedImage>(image)?;
-    let device = loaded.device().expect("[tetsu-boot] LoadedImage has no device");
+    let device = loaded
+        .device()
+        .expect("[tetsu-boot] LoadedImage has no device");
 
     let mut sfs = boot::open_protocol_exclusive::<SimpleFileSystem>(device)?;
     let mut root = sfs.open_volume()?;
 
-    let file_handle = root
-        .open(kernel_path, FileMode::Read, FileAttribute::empty())?;
+    let file_handle = root.open(kernel_path, FileMode::Read, FileAttribute::empty())?;
 
-    let mut kernel: RegularFile = match file_handle.into_type().expect("[tetsu-boot] into_type failed") {
+    let mut kernel: RegularFile = match file_handle
+        .into_type()
+        .expect("[tetsu-boot] into_type failed")
+    {
         FileType::Regular(f) => f,
         _ => return Err(Error::new(Status::LOAD_ERROR, ())),
     };
@@ -37,15 +41,13 @@ pub fn load_kernel(kernel_path: &CStr16, kernel_addr: u64) -> Result<(), Error>{
         pages,
     )?;
 
-    let dst = unsafe {
-        core::slice::from_raw_parts_mut(kernel_addr as *mut u8, size)
-    };
+    let dst = unsafe { core::slice::from_raw_parts_mut(kernel_addr as *mut u8, size) };
 
     let read = kernel.read(dst).expect("[tetsu-boot] read failed");
     if read != size {
         info!("[tetsu-boot] short read: {} / {}", read, size);
-        return Err(Error::new(Status::LOAD_ERROR, ()))
+        return Err(Error::new(Status::LOAD_ERROR, ()));
     }
-    
+
     Ok(())
 }

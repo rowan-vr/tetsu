@@ -5,11 +5,11 @@ use core::arch::asm;
 const COM1: u16 = 0x3F8;
 const QEMU_EXIT_PORT: u16 = 0xF4;
 
-pub const RESET: &str  = "\x1b[0m";
-pub const GREEN: &str  = "\x1b[32m";
-pub const RED: &str    = "\x1b[31m";
+pub const RESET: &str = "\x1b[0m";
+pub const GREEN: &str = "\x1b[32m";
+pub const RED: &str = "\x1b[31m";
 pub const YELLOW: &str = "\x1b[33m";
-pub const BOLD: &str   = "\x1b[1m";
+pub const BOLD: &str = "\x1b[1m";
 
 // ---------- Port I/O helpers ----------
 
@@ -60,7 +60,7 @@ pub fn serial_init() {
         outb(COM1 + 3, 0x80); // Enable DLAB (set baud rate divisor)
         outb(COM1 + 0, 0x03); // Divisor = 3 -> 38400 baud (common/simple)
         outb(COM1 + 1, 0x00);
-        outb(COM1 + 3, 0x03);// 8 bits, no parity, one stop bit
+        outb(COM1 + 3, 0x03); // 8 bits, no parity, one stop bit
         outb(COM1 + 2, 0xC7); // Enable FIFO, clear them, 14-byte threshold
         outb(COM1 + 4, 0x0B); // IRQs enabled, RTS/DSR set
     }

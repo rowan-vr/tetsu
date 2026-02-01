@@ -1,6 +1,6 @@
-use uefi::{boot, Error};
-use uefi::proto::console::gop::GraphicsOutput;
 use tetsu_abi::FramebufferInfo;
+use uefi::proto::console::gop::GraphicsOutput;
+use uefi::{Error, boot};
 
 pub fn capture_framebuffer_info() -> Result<FramebufferInfo, Error> {
     let gop_handle = boot::get_handle_for_protocol::<GraphicsOutput>()?;
@@ -21,6 +21,6 @@ pub fn capture_framebuffer_info() -> Result<FramebufferInfo, Error> {
         size: size as u64,
         format: pixel_format as u32,
         stride: stride as u32,
-        bpp: 4
+        bpp: 4,
     })
 }
