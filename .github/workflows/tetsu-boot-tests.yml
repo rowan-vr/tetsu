@@ -17,6 +17,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y qemu-system-x86 ovmf mtools dosfstools
 
+      - name: Locate OVMF firmware files
+        run: |
+          set -eux
+          dpkg -L ovmf | grep -E 'OVMF_(CODE|VARS).*\.fd$' || true
+          ls -la /usr/share/OVMF || true
+          find /usr/share -maxdepth 3 -type f -name 'OVMF_*fd' -print || true
+
+
       - name: Set up Rust nightly
         uses: dtolnay/rust-toolchain@nightly
         with:
