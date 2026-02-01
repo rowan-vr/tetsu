@@ -58,6 +58,7 @@ pub fn serial_init() {
     unsafe {
         outb(COM1 + 1, 0x00); // Disable interrupts
         outb(COM1 + 3, 0x80); // Enable DLAB (set baud rate divisor)
+        #[allow(clippy::identity_op)]
         outb(COM1 + 0, 0x03); // Divisor = 3 -> 38400 baud (common/simple)
         outb(COM1 + 1, 0x00);
         outb(COM1 + 3, 0x03); // 8 bits, no parity, one stop bit

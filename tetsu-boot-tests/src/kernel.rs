@@ -3,12 +3,12 @@ use tetsu_tests::check;
 use uefi::{CStr16, cstr16};
 
 #[test_case]
-fn test_load_kernel_happy_path() -> Result<(), ()> {
+fn test_load_kernel_happy_path() -> Result<(), &'static str> {
     let path = cstr16!(r"\kernel.bin");
 
     let addr: u64 = 0x0010_0000;
 
-    kernel::load_kernel(&path, addr).map_err(|_| ())?;
+    kernel::load_kernel(&path, addr).map_err(|_| "load_kernel failed")?;
 
     // Verify memory at addr is not all-zero (very weak check, but simple)
     let buf = unsafe { core::slice::from_raw_parts(addr as *const u8, 16) };
@@ -20,14 +20,14 @@ fn test_load_kernel_happy_path() -> Result<(), ()> {
         }
     }
     if !any_nonzero {
-        return Err(());
+        return Err("Loaded kernel is all zeros");
     }
 
     Ok(())
 }
 
 #[test_case]
-fn test_load_kernel_missing_file_fails() -> Result<(), ()> {
+fn test_load_kernel_missing_file_fails() -> Result<(), &'static str> {
     let path = cstr16!(r"\missing.bin");
 
     let addr: u64 = 0x0010_0000;
@@ -38,7 +38,7 @@ fn test_load_kernel_missing_file_fails() -> Result<(), ()> {
 }
 
 #[test_case]
-fn test_alloc_stack_pages_invariants() -> Result<(), ()> {
+fn test_alloc_stack_pages_invariants() -> Result<(), &'static str> {
     let pages = 8;
     let (base, top) = tetsu_boot::arch::x64_86::alloc_stack_pages(pages);
 

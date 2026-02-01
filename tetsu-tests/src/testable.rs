@@ -5,17 +5,17 @@ pub trait Testable {
 }
 
 pub trait IntoTestResult {
-    fn into_result(self) -> Result<(), ()>;
+    fn into_result(self) -> Result<(), &'static str>;
 }
 
 impl IntoTestResult for () {
-    fn into_result(self) -> Result<(), ()> {
+    fn into_result(self) -> Result<(), &'static str> {
         Ok(())
     }
 }
 
-impl IntoTestResult for Result<(), ()> {
-    fn into_result(self) -> Result<(), ()> {
+impl IntoTestResult for Result<(), &'static str> {
+    fn into_result(self) -> Result<(), &'static str> {
         self
     }
 }
@@ -38,7 +38,7 @@ where
                 serial_write_str("\n");
                 true
             }
-            Err(()) => {
+            Err(_msg) => {
                 serial_write_str(RED);
                 serial_write_str("FAIL");
                 serial_write_str(RESET);

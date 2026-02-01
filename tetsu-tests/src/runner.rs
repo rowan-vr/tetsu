@@ -8,7 +8,7 @@ pub fn test_runner(tests: &[&dyn Testable]) -> ! {
     let mut passed = 0;
 
     for test in tests {
-        if test.run() == true {
+        if test.run() {
             passed += 1;
         }
     }

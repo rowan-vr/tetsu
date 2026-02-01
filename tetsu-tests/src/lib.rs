@@ -9,7 +9,7 @@ pub mod testable;
 macro_rules! check {
     ($cond:expr) => {
         if !($cond) {
-            return Err(());
+            return Err("check failed");
         }
     };
 }
@@ -19,7 +19,7 @@ macro_rules! check {
 macro_rules! check_eq {
     ($left:expr, $right:expr) => {
         if $left != $right {
-            return Err(());
+            return Err("check_eq failed");
         }
     };
 }

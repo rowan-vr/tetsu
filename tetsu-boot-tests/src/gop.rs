@@ -2,8 +2,8 @@ use tetsu_boot::gop::capture_framebuffer_info;
 use tetsu_tests::check;
 
 #[test_case]
-fn test_capture_framebuffer_info_sane() -> Result<(), ()> {
-    let fb = capture_framebuffer_info().map_err(|_| ())?;
+fn test_capture_framebuffer_info_sane() -> Result<(), &'static str> {
+    let fb = capture_framebuffer_info().map_err(|_| "capture_framebuffer_info failed")?;
 
     check!(fb.base != 0);
     check!(fb.width != 0);
