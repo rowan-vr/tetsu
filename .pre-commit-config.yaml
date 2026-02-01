@@ -19,6 +19,7 @@ repos:
       - id: check-yaml
       - id: mixed-line-ending
       - id: check-added-large-files
+    stages: [pre-commit]
 
   # Optional: shell script linting
   - repo: https://github.com/koalaman/shellcheck-precommit
@@ -26,6 +27,7 @@ repos:
     hooks:
       - id: shellcheck
         files: ^scripts/.*\.sh$
+    stages: [pre-commit]
 
   # Optional: format YAML nicely (if you want)
   # - repo: https://github.com/adrienverge/yamllint
