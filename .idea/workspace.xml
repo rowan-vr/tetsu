@@ -23,9 +23,7 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/tetsu-boot-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tetsu-boot-tests.yml" afterDir="false" />
-    </list>
+    <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -185,7 +183,7 @@
       <workItem from="1769858076511" duration="60000" />
       <workItem from="1769858253176" duration="16792000" />
       <workItem from="1769941786111" duration="329000" />
-      <workItem from="1769942449830" duration="10481000" />
+      <workItem from="1769942449830" duration="10912000" />
     </task>
     <servers />
   </component>

@@ -41,6 +41,7 @@ if [[ -z "${OVMF_CODE:-}" ]]; then
   for path in \
     /usr/share/OVMF/OVMF_CODE.fd \
     /usr/share/OVMF/OVMF_CODE.4m.fd \
+    /usr/share/OVMF/OVMF_CODE_4M.fd \
     /usr/share/edk2-ovmf/x64/OVMF_CODE.fd \
     /usr/share/edk2-ovmf/x64/OVMF_CODE.4m.fd \
     /usr/share/edk2/x64/OVMF_CODE.4m.fd
@@ -68,6 +69,7 @@ if [[ ! -f "$OVMF_VARS" ]]; then
     for path in \
       /usr/share/OVMF/OVMF_VARS.fd \
       /usr/share/OVMF/OVMF_VARS.4m.fd \
+      /usr/share/OVMF/OVMF_VARS_4M.fd \
       /usr/share/edk2-ovmf/x64/OVMF_VARS.fd \
       /usr/share/edk2-ovmf/x64/OVMF_VARS.4m.fd \
       /usr/share/edk2/x64/OVMF_VARS.4m.fd
