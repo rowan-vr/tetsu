@@ -15,7 +15,7 @@ jobs:
       - name: Install system deps (QEMU + OVMF)
         run: |
           sudo apt-get update
-          sudo apt-get install -y qemu-system-x86 edk2-ovmf mtools dosfstools
+          sudo apt-get install -y qemu-system-x86 ovmf mtools dosfstools
 
       - name: Set up Rust nightly
         uses: dtolnay/rust-toolchain@nightly
