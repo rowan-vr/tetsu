@@ -14,12 +14,17 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
+        stages: [pre-commit]
       - id: end-of-file-fixer
+        stages: [pre-commit]
       - id: check-merge-conflict
+        stages: [pre-commit]
       - id: check-yaml
+        stages: [pre-commit]
       - id: mixed-line-ending
+        stages: [pre-commit]
       - id: check-added-large-files
-    stages: [pre-commit]
+        stages: [pre-commit]
 
   # Optional: shell script linting
   - repo: https://github.com/koalaman/shellcheck-precommit
@@ -27,7 +32,7 @@ repos:
     hooks:
       - id: shellcheck
         files: ^scripts/.*\.sh$
-    stages: [pre-commit]
+        stages: [pre-commit]
 
   # Optional: format YAML nicely (if you want)
   # - repo: https://github.com/adrienverge/yamllint
