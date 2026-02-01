@@ -3,7 +3,7 @@ use uefi::boot;
 use uefi::boot::{AllocateType, MemoryType};
 use tetsu_abi::BootInfo;
 
-pub(crate) unsafe fn jump_kernel(entry_addr: usize, stack_top: u64, boot_info_ptr: *const BootInfo) -> ! {
+pub unsafe fn jump_kernel(entry_addr: usize, stack_top: u64, boot_info_ptr: *const BootInfo) -> ! {
     unsafe {asm!("cli", options(nomem, nostack, preserves_flags)) };
 
     unsafe {
@@ -20,7 +20,7 @@ pub(crate) unsafe fn jump_kernel(entry_addr: usize, stack_top: u64, boot_info_pt
     }
 }
 
-pub(crate) fn alloc_stack_pages(pages: usize) -> (u64, u64) {
+pub fn alloc_stack_pages(pages: usize) -> (u64, u64) {
     let addr = boot::allocate_pages(AllocateType::AnyPages, MemoryType::LOADER_DATA, pages)
         .expect("[tetsu-boot] alloc stack pages failed");
     let base = addr.as_ptr() as u64;

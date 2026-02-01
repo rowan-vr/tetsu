@@ -89,11 +89,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "tetsu-boot-tests"
+version = "0.1.0"
+dependencies = [
+ "tetsu-boot",
+ "tetsu-tests",
+ "uefi",
+]
+
+[[package]]
 name = "tetsu-kernel"
 version = "0.1.0"
 dependencies = [
  "tetsu-abi",
 ]
+
+[[package]]
+name = "tetsu-tests"
+version = "0.1.0"
 
 [[package]]
 name = "ucs2"

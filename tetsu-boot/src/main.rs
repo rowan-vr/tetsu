@@ -15,12 +15,16 @@ const KERNEL_LOAD_ADDR: u64 = 0x0010_0000; // 1 MiB
 
 #[entry]
 fn main() -> Status {
+    run()
+}
+
+fn run() -> Status {
     uefi::helpers::init().unwrap();
     info!("[tetsu-boot] Started bootloader...");
 
     match kernel::load_kernel(KERNEL_PATH, KERNEL_LOAD_ADDR) {
         Ok(()) => info!("[tetsu-boot] loaded kernel successfully!"),
-        Err(status) => return status,
+        Err(e) => return e.status(),
     };
 
     info!("[tetsu-boot] loaded kernel @ {:#x}", KERNEL_LOAD_ADDR);
@@ -35,5 +39,5 @@ fn main() -> Status {
 
     info!("[tetsu-boot] Jumping to kernel...");
 
-    handoff::handoff(stack_top, fb);
+    handoff::handoff(KERNEL_LOAD_ADDR as usize,stack_top, fb);
 }

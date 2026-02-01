@@ -5,10 +5,18 @@ edition = "2024"
 
 [dependencies]
 log = "0.4.29"
-uefi = { version = "0.36.1", features = ["logger", "panic_handler"] }
+uefi = { version = "0.36.1", default-features = false, features = ["logger", "alloc", "global_allocator"] }
 tetsu-abi = { path = "../tetsu-abi" }
+
+[features]
+default = ["uefi-panic"]
+uefi-panic = ["uefi/panic_handler"]
+
+[lib]
+path = "src/lib.rs"
 
 [[bin]]
 name = "tetsu-boot"
+path = "src/main.rs"
 test = false
 bench = false

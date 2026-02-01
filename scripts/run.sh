@@ -7,16 +7,19 @@ set -euo pipefail
 #   ./scripts/run.sh
 #   RAM=1024 ./scripts/run.sh
 #   ESP_IMG=build/esp.img ./scripts/run.sh
+#   ESP_IMG=build/esp.img RUN_MODE=test ./scripts/run.sh
 #
 # Optional env vars:
 #   ESP_IMG       (default: esp.img)
 #   RAM           (default: 512)
 #   OVMF_CODE     (auto-detected if not set)
 #   OVMF_VARS     (default: OVMF_VARS.fd)
+#   RUN_MODE      (default: normal)
 
 ESP_IMG="${ESP_IMG:-esp.img}"
 RAM="${RAM:-512}"
 OVMF_VARS="${OVMF_VARS:-OVMF_VARS.fd}"
+MODE="${RUN_MODE:-normal}"
 
 need_cmd() {
   command -v "$1" >/dev/null 2>&1 || {
@@ -85,17 +88,33 @@ if [[ ! -f "$OVMF_VARS" ]]; then
   cp $SYS_OVMF_VARS $OVMF_VARS
 fi
 
+QEMU_ARGS=(
+  -machine q35
+  -m "${RAM}M"
+  -drive if=pflash,format=raw,readonly=on,file="$OVMF_CODE"
+  -drive if=pflash,format=raw,file="$OVMF_VARS"
+  -drive format=raw,file="$ESP_IMG"
+  -serial stdio
+)
+
+if [[ "$RUN_MODE" == "test" ]]; then
+  echo "[run] Test mode enabled (isa-debug-exit)"
+  QEMU_ARGS+=(
+    -device isa-debug-exit,iobase=0xf4,iosize=0x04
+  )
+fi
+
 echo "[run] Booting TetsuOS"
 echo "      ESP:  $ESP_IMG"
 echo "      RAM:  ${RAM}M"
 echo "      OVMF: $OVMF_CODE"
+echo "      MODE: $MODE"
 
-qemu-system-x86_64 \
-  -machine q35 \
-  -m "$RAM"M \
-  -drive if=pflash,format=raw,readonly=on,file="$OVMF_CODE" \
-  -drive if=pflash,format=raw,file="$OVMF_VARS" \
-  -drive format=raw,file="$ESP_IMG" \
-  -no-reboot \
-  -no-shutdown \
-  -serial stdio
+
+set +e
+qemu-system-x86_64 "${QEMU_ARGS[@]}"
+rc=$?
+set -e
+
+echo "[run] qemu exited with code: $rc"
+exit "$rc"

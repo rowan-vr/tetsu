@@ -1,0 +1,12 @@
+[package]
+name = "tetsu-boot-tests"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tetsu-boot = { path = "../tetsu-boot" , default-features = false}
+uefi = { version = "0.36.1", default-features = false, features = ["alloc"] }
+tetsu-tests = { path = "../tetsu-tests" }
+
+[[bin]]
+name = "tetsu-boot-tests"

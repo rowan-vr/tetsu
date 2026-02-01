@@ -10,3 +10,4 @@ rustflags = [
 [alias]
 uefi = "run -p tetsu-boot --target x86_64-unknown-uefi"
 boot = "build -p tetsu-boot --target x86_64-unknown-uefi"
+test-boot = "test -p tetsu-boot-tests --target x86_64-unknown-uefi"

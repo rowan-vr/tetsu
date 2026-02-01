@@ -2,7 +2,7 @@ use uefi::{boot, Error};
 use uefi::proto::console::gop::GraphicsOutput;
 use tetsu_abi::FramebufferInfo;
 
-pub(crate) fn capture_framebuffer_info() -> Result<FramebufferInfo, Error> {
+pub fn capture_framebuffer_info() -> Result<FramebufferInfo, Error> {
     let gop_handle = boot::get_handle_for_protocol::<GraphicsOutput>()?;
     let mut gop = boot::open_protocol_exclusive::<GraphicsOutput>(gop_handle)?;
 

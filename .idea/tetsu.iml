@@ -5,6 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$/tetsu-boot/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tetsu-kernel/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tetsu-abi/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tetsu-boot/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tetsu-boot-tests/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tetsu-tests/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/tetsu-kernel/target" />
     </content>
