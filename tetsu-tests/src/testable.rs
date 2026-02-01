@@ -33,7 +33,7 @@ where
         match self().into_result() {
             Ok(()) => {
                 serial_write_str(GREEN);
-                serial_write_str("OK");
+                serial_write_str("PASS");
                 serial_write_str(RESET);
                 serial_write_str("\n");
                 true
