@@ -41,5 +41,7 @@ jobs:
           chmod +x scripts/*.sh
 
       - name: Run UEFI test binary under QEMU
+        env:
+          RUN_HEADLESS: "1"
         run: |
           cargo +nightly test-boot

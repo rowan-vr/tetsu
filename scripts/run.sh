@@ -20,6 +20,7 @@ ESP_IMG="${ESP_IMG:-esp.img}"
 RAM="${RAM:-512}"
 OVMF_VARS="${OVMF_VARS:-OVMF_VARS.fd}"
 MODE="${RUN_MODE:-normal}"
+RUN_HEADLESS="${RUN_HEADLESS:-0}"
 
 need_cmd() {
   command -v "$1" >/dev/null 2>&1 || {
@@ -98,6 +99,10 @@ QEMU_ARGS=(
   -drive format=raw,file="$ESP_IMG"
   -serial stdio
 )
+
+if [[  "$RUN_HEADLESS" == "1"]]; then
+  QEMU_ARGS+=(-display none)
+fi
 
 if [[ "$RUN_MODE" == "test" ]]; then
   echo "[run] Test mode enabled (isa-debug-exit)"
