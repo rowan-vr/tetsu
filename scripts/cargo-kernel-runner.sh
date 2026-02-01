@@ -9,7 +9,7 @@ EFI_PATH="${EFI_PATH:-build}" # build if not found
 ESP_IMG="${ESP_IMG:-esp.img}"
 
 KERNEL_ELF="${1:?missing path to kernel binary}"
-KERNEL_BIN="${KERNEL_BIN:-build/tetsu-kernel.bin}"
+KERNEL_BIN="${KERNEL_BIN:-target/tetsu-kernel.bin}"
 
 # Determine mode
 # - Auto: if artifact name contains "-tests" or "test"

@@ -26,7 +26,10 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="" />
+    <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/cargo-kernel-runner.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/cargo-kernel-runner.sh" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -189,7 +192,7 @@
       <workItem from="1769858076511" duration="60000" />
       <workItem from="1769858253176" duration="16792000" />
       <workItem from="1769941786111" duration="329000" />
-      <workItem from="1769942449830" duration="20991000" />
+      <workItem from="1769942449830" duration="21968000" />
     </task>
     <servers />
   </component>
