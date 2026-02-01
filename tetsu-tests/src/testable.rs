@@ -1,7 +1,7 @@
 use crate::qemu::{serial_write_str, BOLD, GREEN, RED, RESET};
 
 pub trait Testable {
-    fn run(&self);
+    fn run(&self) -> bool;
 }
 
 pub trait IntoTestResult {
@@ -21,7 +21,7 @@ where
     T: Fn() -> R,
     R: IntoTestResult,
 {
-    fn run(&self) {
+    fn run(&self) -> bool {
         serial_write_str(BOLD);
         serial_write_str("[RUN] ");
         serial_write_str(core::any::type_name::<T>());
@@ -32,12 +32,14 @@ where
                 serial_write_str("OK");
                 serial_write_str(RESET);
                 serial_write_str("\n");
+                true
             }
             Err(msg) => {
                 serial_write_str(RED);
                 serial_write_str("FAIL");
                 serial_write_str(RESET);
                 serial_write_str("\n");
+                false
             }
         }
     }

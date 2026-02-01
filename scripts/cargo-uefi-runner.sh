@@ -48,7 +48,7 @@ fi
 # If your Rust writes 0x10 for success and 0x11 for failure:
 case "$rc" in
   33)  echo "[runner] tests: PASS"; exit 0 ;;  # (0x10<<1)|1
-  35)  echo "[runner] tests: FAIL"; exit 1 ;;  # (0x11<<1)|1
+  35)  echo "[runner] tests: FAIL"; exit 101 ;;  # (0x11<<1)|1
   *)
     echo "[runner] qemu exit code: $rc (not a recognized test exit code)"
     exit 1

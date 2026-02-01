@@ -1,4 +1,4 @@
-use crate::qemu::{qemu_exit_success, serial_write_number, serial_write_str, BOLD, RESET};
+use crate::qemu::{qemu_exit_fail, qemu_exit_success, serial_write_number, serial_write_str, BOLD, RESET};
 use crate::testable::Testable;
 
 pub fn test_runner(tests: &[&dyn Testable]) -> ! {
@@ -6,8 +6,9 @@ pub fn test_runner(tests: &[&dyn Testable]) -> ! {
     let mut passed = 0;
 
     for test in tests {
-        test.run();
-        passed += 1;
+        if test.run() == true {
+            passed += 1;
+        }
     }
 
     serial_write_str(BOLD);
@@ -18,5 +19,9 @@ pub fn test_runner(tests: &[&dyn Testable]) -> ! {
     serial_write_str(" passed\n");
     serial_write_str(RESET);
 
-    qemu_exit_success();
+    if passed == total as u64 {
+        qemu_exit_success();
+    } else {
+        qemu_exit_fail();
+    }
 }
