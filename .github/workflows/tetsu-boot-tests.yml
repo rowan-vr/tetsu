@@ -37,4 +37,4 @@ jobs:
           OVMF_CODE: /usr/share/OVMF/OVMF_CODE.fd
           SYS_OVMF_VARS: /usr/share/OVMF/OVMF_VARS.fd
         run: |
-          cargo +nightly boot-test
+          cargo +nightly test-boot
