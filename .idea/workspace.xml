@@ -23,13 +23,7 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/src/kernel.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/src/kernel.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot/src/arch/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/src/arch/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/runner.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/runner.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-tests/src/testable.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/src/testable.rs" afterDir="false" />
-    </list>
+    <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,7 +182,7 @@
       <workItem from="1769858076511" duration="60000" />
       <workItem from="1769858253176" duration="16792000" />
       <workItem from="1769941786111" duration="329000" />
-      <workItem from="1769942449830" duration="9777000" />
+      <workItem from="1769942449830" duration="10113000" />
     </task>
     <servers />
   </component>
