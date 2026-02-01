@@ -109,6 +109,7 @@ name = "tetsu-kernel-tests"
 version = "0.1.0"
 dependencies = [
  "tetsu-abi",
+ "tetsu-kernel",
  "tetsu-tests",
 ]
 

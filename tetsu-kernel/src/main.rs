@@ -1,6 +1,8 @@
 #![no_std]
 #![no_main]
 
+mod drivers;
+
 use core::panic::PanicInfo;
 use core::ptr;
 use core::sync::atomic::{AtomicPtr, Ordering};

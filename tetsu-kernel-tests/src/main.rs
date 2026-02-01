@@ -5,13 +5,16 @@
 #![reexport_test_harness_main = "test_main"]
 #![allow(unused_imports)]
 #![allow(unreachable_code)]
+#![allow(dead_code)]
 
+mod drivers;
 mod trivial;
 
 use core::panic::PanicInfo;
 use core::ptr;
 use core::sync::atomic::{AtomicPtr, Ordering};
 use tetsu_abi::BootInfo;
+use tetsu_tests::qemu::{RED, RESET};
 use tetsu_tests::*;
 
 static BOOT_INFO_PTR: AtomicPtr<BootInfo> = AtomicPtr::new(ptr::null_mut());
@@ -39,7 +42,9 @@ pub fn boot_info() -> Result<&'static BootInfo, &'static str> {
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    qemu::serial_write_str("[FATAL]\n");
+    qemu::serial_write_str(RED);
+    qemu::serial_write_str("FATAL");
+    qemu::serial_write_str(RESET);
     let _ = info;
 
     qemu::qemu_exit_fail()

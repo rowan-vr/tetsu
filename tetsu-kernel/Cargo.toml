@@ -9,6 +9,10 @@ publish = false
 #bootloader = "0.9"
 tetsu-abi = { path = "../tetsu-abi" }
 
+[lib]
+path = "src/lib.rs"
+test = false
+
 [[bin]]
 name = "tetsu-kernel"
 test = false

@@ -8,3 +8,4 @@ publish = false
 [dependencies]
 tetsu-tests = { path = "../tetsu-tests" }
 tetsu-abi = { path = "../tetsu-abi" }
+tetsu-kernel = { path = "../tetsu-kernel" }

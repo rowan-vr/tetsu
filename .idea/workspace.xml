@@ -27,16 +27,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a301e08f-d6d2-4eac-80e5-541124c4b86c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/deny.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/typos.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/tetsu.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tetsu.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-kernel-tests/src/drivers/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-kernel-tests/src/drivers/serial.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-kernel/src/drivers/framebuffer/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-kernel/src/drivers/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-kernel/src/drivers/serial.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tetsu-kernel/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-abi/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-abi/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot-tests/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot-tests/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-boot/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tetsu-kernel-tests/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel-tests/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-kernel-tests/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel-tests/src/main.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tetsu-kernel/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetsu-tests/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-tests/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetsu-kernel/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tetsu-kernel/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +50,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Rust File" />
         <option value="GitHub Workflow" />
+        <option value="Rust File" />
       </list>
     </option>
   </component>
@@ -200,7 +203,7 @@
       <workItem from="1769858076511" duration="60000" />
       <workItem from="1769858253176" duration="16792000" />
       <workItem from="1769941786111" duration="329000" />
-      <workItem from="1769942449830" duration="23835000" />
+      <workItem from="1769942449830" duration="29927000" />
     </task>
     <servers />
   </component>
