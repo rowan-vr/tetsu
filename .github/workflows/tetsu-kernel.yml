@@ -1,4 +1,4 @@
-name: tetsu-boot
+name: tetsu-kernel
 
 on:
   push:

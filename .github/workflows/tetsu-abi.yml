@@ -1,4 +1,4 @@
-name: tetsu-tests
+name: tetsu-abi
 
 on:
   push:
