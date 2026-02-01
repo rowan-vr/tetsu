@@ -24,7 +24,8 @@ fn test_main() -> ! {
 #[entry]
 fn entry() -> Status {
     test_main();
-    Status::SUCCESS
+
+    panic!("Test main ended without closure");
 }
 
 #[cfg(target_os = "uefi")]

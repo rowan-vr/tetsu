@@ -27,6 +27,7 @@ echo "[1/3] Build kernel ($KERNEL_PKG) for $KERNEL_TARGET"
 cargo +nightly build -p "$KERNEL_PKG" \
   -Z build-std=core \
   -Z build-std-features=compiler-builtins-mem \
+  -Zjson-target-spec \
   --target "$KERNEL_TARGET"
 
 if [[ ! -f "$KERNEL_ELF" ]]; then

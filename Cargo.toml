@@ -1,5 +1,5 @@
 [workspace]
-members = [ "tetsu-abi","tetsu-boot", "tetsu-boot-tests", "tetsu-kernel", "tetsu-tests"]
+members = [ "tetsu-abi","tetsu-boot", "tetsu-boot-tests", "tetsu-kernel", "tetsu-kernel-tests", "tetsu-tests"]
 resolver = "2"
 
 [profile.dev.package."tetsu-boot"]
